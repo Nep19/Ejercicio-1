@@ -1,5 +1,5 @@
 class CounterModel {
-  int counter;
+  int count;
 
-  CounterModel(this.counter);
+  CounterModel(this.count);
 }
