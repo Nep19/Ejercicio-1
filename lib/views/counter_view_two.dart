@@ -1,8 +1,6 @@
-// Archivo: lib/views/counter_view.dart
-
-import 'package:my_app/viewmodels/counter_viewmodel.dart'; // Nota: El import podría variar según el nombre del paquete
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../viewmodels/counter_viewmodel.dart';
 
 class CounterView extends StatelessWidget {
   const CounterView({super.key});
@@ -10,6 +8,7 @@ class CounterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final counterViewModel = Provider.of<CounterViewModel>(context);
+
     return Scaffold(
       appBar: AppBar(title: const Text('Contador MVVM')),
       body: Center(
@@ -20,10 +19,11 @@ class CounterView extends StatelessWidget {
               'Contador: ${counterViewModel.count}',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            const SizedBox(height: 20), // Un poco de espacio
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // Botón para decrementar
                 ElevatedButton(
                   onPressed: () {
                     counterViewModel.decrement();
@@ -31,6 +31,19 @@ class CounterView extends StatelessWidget {
                   child: const Icon(Icons.remove),
                 ),
                 const SizedBox(width: 20),
+                // Nuevo botón para resetear
+                ElevatedButton(
+                  onPressed: () {
+                    counterViewModel.reset();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        Colors.orange, // Color naranja para diferenciarlo
+                  ),
+                  child: const Text('Resetear'),
+                ),
+                const SizedBox(width: 20),
+                // Botón para incrementar
                 ElevatedButton(
                   onPressed: () {
                     counterViewModel.increment();
