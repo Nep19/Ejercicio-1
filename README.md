@@ -1,4 +1,4 @@
-# my_app
+NEPTALI
 
 A new Flutter project.
 
